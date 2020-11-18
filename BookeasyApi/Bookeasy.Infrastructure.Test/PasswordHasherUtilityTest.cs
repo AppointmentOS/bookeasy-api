@@ -35,14 +35,5 @@ namespace Bookeasy.Infrastructure.Test
             
             Assert.IsTrue(PasswordHasherUtility.VerifyPassword(password,salt,hash));
         }
-
-        [Test]
-        public void TestHardCodePassword()
-        {
-            var password = "password";
-            var salt = "BPby7vSObjgCsihPgS95TQ==";
-            var hash = "Bpz/abhlXaxAnrMHAYmTFjlEOS06cmfJ5uSW68TuY54=";
-            Assert.IsTrue(PasswordHasherUtility.VerifyPassword(password,salt,hash));
-        }
     }
 }
