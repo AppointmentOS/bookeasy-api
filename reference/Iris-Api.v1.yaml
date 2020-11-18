@@ -1,0 +1,244 @@
+openapi: 3.0.0
+info:
+  title: Iris Api
+  version: '1.0'
+  description: ''
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /users/login:
+    post:
+      summary: ''
+      operationId: post-users-login
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  refreshToken:
+                    type: string
+                  user:
+                    $ref: '#/components/schemas/User'
+      description: Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+            examples:
+              example:
+                value:
+                  username: johndoe
+                  password: password1
+  /users/signup:
+    post:
+      summary: ''
+      operationId: post-users-signup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      description: Create new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+                firstname:
+                  type: string
+                lastname:
+                  type: string
+  '/posts/{postId}':
+    post:
+      summary: ''
+      operationId: post-posts
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+      security:
+        - AuthorizationToken: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
+        description: ''
+      description: Create new post
+    get:
+      summary: ''
+      operationId: get-posts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+              examples: {}
+      parameters: []
+      description: Get post by post id
+    parameters:
+      - schema:
+          type: string
+        name: postId
+        in: path
+        required: true
+        description: ''
+    put:
+      summary: ''
+      operationId: put-posts-postId
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+      description: Update a post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: string
+                title:
+                  type: string
+  '/posts/{postId}/comments':
+    parameters:
+      - schema:
+          type: string
+        name: postId
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-posts-postId-comments-commentId
+      responses:
+        '201':
+          description: Created
+      description: Post a comment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: string
+  '/posts/{postId}/comments/{commentId}':
+    parameters:
+      - schema:
+          type: string
+        name: postId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: commentId
+        in: path
+        required: true
+    put:
+      summary: ''
+      operationId: put-posts-postId-comments-commentId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: string
+      description: Update a comment
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+    Post:
+      title: Post
+      type: object
+      x-examples: {}
+      properties:
+        id:
+          type: string
+        userOwnerId:
+          type: string
+        title:
+          type: string
+        body:
+          type: string
+        creationDate:
+          type: string
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+    Comment:
+      title: Comment
+      type: object
+      properties:
+        id:
+          type: string
+        postId:
+          type: string
+        text:
+          type: string
+        upVote:
+          type: integer
+        downVote:
+          type: integer
+  securitySchemes:
+    AuthorizationToken:
+      type: http
+      scheme: bearer
