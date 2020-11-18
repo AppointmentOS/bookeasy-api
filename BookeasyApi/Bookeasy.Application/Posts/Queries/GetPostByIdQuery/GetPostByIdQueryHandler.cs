@@ -17,6 +17,7 @@ namespace Bookeasy.Application.Posts.Queries.GetPostByIdQuery
             _context = context;
             _mapper = mapper;
         }
+
         public async Task<PostDto> Handle(GetPostByIdQuery request, CancellationToken cancellationToken)
         {
             var post = await _context.Post.GetAsync(request.Id);

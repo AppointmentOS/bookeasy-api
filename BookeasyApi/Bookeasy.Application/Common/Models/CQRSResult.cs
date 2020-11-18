@@ -21,10 +21,7 @@ namespace Bookeasy.Application.Common.Models
         {
             if (payload == null)
                 throw new ArgumentNullException(nameof(payload));
-            return new CQRSResult<T>
-            {
-                Payload = payload
-            };
+            return new CQRSResult<T> { Payload = payload };
         }
 
         public static CQRSResult<T> CreateFailureResult(Exception exception)
@@ -32,10 +29,7 @@ namespace Bookeasy.Application.Common.Models
             if (exception == null)
                 throw new ArgumentNullException(nameof(exception));
 
-            return new CQRSResult<T>
-            {
-                Error = exception
-            };
+            return new CQRSResult<T> { Error = exception };
         }
     }
 }

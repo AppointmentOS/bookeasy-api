@@ -32,6 +32,7 @@ namespace Bookeasy.Infrastructure.Identity
                 var createdUser = await _context.User.CreateAsync(user);
                 return (Result.Success(), createdUser);
             }
+
             throw new InvalidOperationException("User already exists");
         }
 

@@ -5,7 +5,6 @@ namespace Bookeasy.Domain.Entities
 {
     public interface IEntityBase
     {
-        [BsonId]
-        public ObjectId Id { get; set; }
+        [BsonId] public ObjectId Id { get; set; }
     }
 }

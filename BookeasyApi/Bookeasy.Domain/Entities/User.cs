@@ -9,6 +9,7 @@ namespace Bookeasy.Domain.Entities
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public ObjectId Id { get; set; }
+
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

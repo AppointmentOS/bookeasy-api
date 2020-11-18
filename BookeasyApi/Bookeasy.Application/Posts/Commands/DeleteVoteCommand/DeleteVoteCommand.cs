@@ -7,5 +7,4 @@ namespace Bookeasy.Application.Posts.Commands.DeleteVoteCommand
         public string PostId { get; set; }
         public string UserId { get; set; }
     }
-
 }

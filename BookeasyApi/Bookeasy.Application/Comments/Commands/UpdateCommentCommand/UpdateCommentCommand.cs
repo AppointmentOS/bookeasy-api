@@ -31,12 +31,13 @@ namespace Bookeasy.Application.Comments.Commands.UpdateCommentCommand
 
         public async Task<Comment> Handle(UpdateCommentCommand request, CancellationToken cancellationToken)
         {
-            var result = await _context.Comment.UpdateAsync(request.PostId, new Comment
-            {
-                Id = ObjectId.Parse(request.CommentId),
-                Body = request.Body,
-                OwnerUserId = request.OwnerUserId
-            });
+            var result = await _context.Comment.UpdateAsync(request.PostId,
+                new Comment
+                {
+                    Id = ObjectId.Parse(request.CommentId),
+                    Body = request.Body,
+                    OwnerUserId = request.OwnerUserId
+                });
 
             return _mapper.Map<Comment>(result);
         }

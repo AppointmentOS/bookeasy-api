@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 
 namespace Bookeasy.Application.Comments.Commands.CreateCommentCommand
 {
-    public class CreateCommentCommandHandler : MediatR.IRequestHandler<Commands.CreateCommentCommand.CreateCommentCommand, Comment>
+    public class
+        CreateCommentCommandHandler : MediatR.IRequestHandler<Commands.CreateCommentCommand.CreateCommentCommand,
+            Comment>
     {
         private readonly IIrisDbContext _context;
         private readonly IMapper _mapper;
@@ -28,12 +30,8 @@ namespace Bookeasy.Application.Comments.Commands.CreateCommentCommand
             if (string.IsNullOrEmpty(request.PostId))
                 throw new ArgumentException(nameof(request.PostId) + " is required");
 
-            var newComment = await _context.Comment.AddAsync(request.PostId, new Comment
-            {
-                Body = request.Body,
-                CreationDate = DateTime.Now,
-                OwnerUserId = request.OwnerUserId
-            });
+            var newComment = await _context.Comment.AddAsync(request.PostId,
+                new Comment { Body = request.Body, CreationDate = DateTime.Now, OwnerUserId = request.OwnerUserId });
 
             return _mapper.Map<Comment>(newComment);
         }

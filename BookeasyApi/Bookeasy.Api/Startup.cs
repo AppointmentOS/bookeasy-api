@@ -68,15 +68,10 @@ namespace Bookeasy.Api
                     {
                         new OpenApiSecurityScheme
                         {
-                            Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.SecurityScheme,
-                                        Id = "Bearer"
-                                },
-                                Scheme = "oauth2",
-                                Name = "Bearer",
-                                In = ParameterLocation.Header,
-
+                            Reference = new OpenApiReference {Type = ReferenceType.SecurityScheme, Id = "Bearer"},
+                            Scheme = "oauth2",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header,
                         },
                         new List<string>()
                     }
@@ -100,7 +95,6 @@ namespace Bookeasy.Api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                 c.RoutePrefix = string.Empty;
-
             });
 
             app.UseCors();

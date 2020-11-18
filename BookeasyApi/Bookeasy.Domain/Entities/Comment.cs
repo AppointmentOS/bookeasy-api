@@ -7,8 +7,7 @@ namespace Bookeasy.Domain.Entities
 {
     public class Comment : IEntityBase
     {
-        [BsonId]
-        public ObjectId Id { get; set; }
+        [BsonId] public ObjectId Id { get; set; }
         public DateTime CreationDate { get; set; } = DateTime.Now;
         public string OwnerUserId { get; set; }
         public string Body { get; set; }

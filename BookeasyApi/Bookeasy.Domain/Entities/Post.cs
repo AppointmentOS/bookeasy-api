@@ -8,10 +8,8 @@ namespace Bookeasy.Domain.Entities
 {
     public class Post : IEntityBase
     {
-        [BsonId]
-        public ObjectId Id { get; set; }
-        [BsonRepresentation(BsonType.String)]
-        public PostType PostType { get; set; }
+        [BsonId] public ObjectId Id { get; set; }
+        [BsonRepresentation(BsonType.String)] public PostType PostType { get; set; }
         public HashSet<string> UsersVotedUp { get; set; } = new HashSet<string>();
         public HashSet<string> UsersVotedDown { get; set; } = new HashSet<string>();
         public int Score { get; set; }

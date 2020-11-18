@@ -57,10 +57,7 @@ namespace Bookeasy.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetPost(string postId)
         {
-            var query = new GetPostByIdQuery
-            {
-                Id = postId
-            };
+            var query = new GetPostByIdQuery { Id = postId };
             var post = await _mediator.Send(query);
             return Ok(GetResourceWithUri(post));
         }
@@ -148,11 +145,7 @@ namespace Bookeasy.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> DeleteVote([FromRoute] string postId)
         {
-            await _mediator.Send(new DeleteVoteCommand
-            {
-                UserId = User.GetUserId(),
-                PostId = postId
-            });
+            await _mediator.Send(new DeleteVoteCommand { UserId = User.GetUserId(), PostId = postId });
             return Ok();
         }
 

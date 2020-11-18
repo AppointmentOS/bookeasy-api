@@ -40,10 +40,7 @@ namespace Bookeasy.Api.Controllers
             if (!result.Failed)
                 return Ok(result.Payload);
 
-            return BadRequest(new ProblemDetails()
-            {
-                Title = result.Error.Message
-            });
+            return BadRequest(new ProblemDetails() { Title = result.Error.Message });
         }
     }
 }

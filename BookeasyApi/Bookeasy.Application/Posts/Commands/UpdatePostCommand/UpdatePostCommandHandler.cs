@@ -21,10 +21,7 @@ namespace Bookeasy.Application.Posts.Commands.UpdatePostCommand
 
         public async Task<PostDto> Handle(UpdatePostCommand request, CancellationToken cancellationToken)
         {
-            var newPost = await _context.Post.UpdateAsync(request.PostId, new Post()
-            {
-                Body = request.Body
-            });
+            var newPost = await _context.Post.UpdateAsync(request.PostId, new Post() { Body = request.Body });
             return _mapper.Map<PostDto>(newPost);
         }
     }

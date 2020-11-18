@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace Bookeasy.Application.Users.Queries.GetAuthenticationToken
 {
-    public class GetAuthenticationTokenQueryHandler : MediatR.IRequestHandler<GetAuthenticationTokenQuery, CQRSResult<AuthenticationTokenDto>>
+    public class GetAuthenticationTokenQueryHandler : MediatR.IRequestHandler<GetAuthenticationTokenQuery,
+        CQRSResult<AuthenticationTokenDto>>
     {
         private readonly IUserManager _userManager;
 
@@ -17,7 +18,8 @@ namespace Bookeasy.Application.Users.Queries.GetAuthenticationToken
             _userManager = userManager;
         }
 
-        public async Task<CQRSResult<AuthenticationTokenDto>> Handle(GetAuthenticationTokenQuery request, CancellationToken cancellationToken)
+        public async Task<CQRSResult<AuthenticationTokenDto>> Handle(GetAuthenticationTokenQuery request,
+            CancellationToken cancellationToken)
         {
             try
             {

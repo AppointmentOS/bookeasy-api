@@ -47,11 +47,8 @@ namespace Bookeasy.Persistence.Collections
             comment.Id = ObjectId.GenerateNewId();
             var update = Builders<Post>.Update.Push(p => p.Comments, comment);
             var post = await _posts.FindOneAndUpdateAsync<Post>(
-                post1 => post1.Id.CompareTo(ObjectId.Parse(postId)) == 0, update, new FindOneAndUpdateOptions<Post>()
-                {
-                    ReturnDocument = ReturnDocument.After,
-                    IsUpsert = false
-                });
+                post1 => post1.Id.CompareTo(ObjectId.Parse(postId)) == 0, update,
+                new FindOneAndUpdateOptions<Post>() { ReturnDocument = ReturnDocument.After, IsUpsert = false });
 
             var newComment = post.Comments.OrderBy(i => i.CreationDate).Last();
 
@@ -70,10 +67,8 @@ namespace Bookeasy.Persistence.Collections
                              Builders<Comment>.Filter.Eq(c => c.Id, comment.Id)
                              & Builders<Comment>.Filter.Eq(c => c.OwnerUserId, comment.OwnerUserId));
             var update = Builders<Post>.Update.Set(post => post.Comments[-1].Body, comment.Body);
-            var post = await _posts.FindOneAndUpdateAsync(filter, update, new FindOneAndUpdateOptions<Post>
-            {
-                ReturnDocument = ReturnDocument.After
-            });
+            var post = await _posts.FindOneAndUpdateAsync(filter, update,
+                new FindOneAndUpdateOptions<Post> { ReturnDocument = ReturnDocument.After });
             var updatedComment = post.Comments.SingleOrDefault(i => i.Id == comment.Id);
             return updatedComment;
         }

@@ -6,7 +6,6 @@ namespace Bookeasy.Application.Common.Models
     {
         public string Email { get; set; }
         public string JwtToken { get; set; }
-        [JsonIgnore]
-        public string RefreshToken { get; set; }
+        [JsonIgnore] public string RefreshToken { get; set; }
     }
 }

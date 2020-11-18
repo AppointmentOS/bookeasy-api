@@ -18,6 +18,7 @@ namespace Bookeasy.Application.Users.Commands.CreateUser
             {
                 _notification = notification;
             }
+
             public async Task Handle(UserCreated notification, CancellationToken cancellationToken)
             {
                 await _notification.SendAsync(new MessageDto());

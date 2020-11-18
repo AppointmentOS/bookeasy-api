@@ -14,10 +14,7 @@ namespace Bookeasy.Infrastructure.Test
         [Test]
         public async Task CreateUserTest()
         {
-            var user = new User()
-            {
-                Email = "sample@email.com"
-            };
+            var user = new User() { Email = "sample@email.com" };
             var password = "password";
 
             var userMock = new Mock<IUserCollection>();

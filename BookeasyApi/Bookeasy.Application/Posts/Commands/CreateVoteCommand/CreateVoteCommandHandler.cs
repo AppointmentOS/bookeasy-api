@@ -17,7 +17,8 @@ namespace Bookeasy.Application.Posts.Commands.CreateVoteCommand
             _context = context;
         }
 
-        public async Task<CQRSResult<Unit>> Handle(Commands.CreateVoteCommand.CreateVoteCommand request, CancellationToken cancellationToken)
+        public async Task<CQRSResult<Unit>> Handle(Commands.CreateVoteCommand.CreateVoteCommand request,
+            CancellationToken cancellationToken)
         {
             switch (request.VoteType)
             {
@@ -30,6 +31,7 @@ namespace Bookeasy.Application.Posts.Commands.CreateVoteCommand
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
             return CQRSResult<Unit>.CreateSuccessResult(Unit.Value);
         }
     }

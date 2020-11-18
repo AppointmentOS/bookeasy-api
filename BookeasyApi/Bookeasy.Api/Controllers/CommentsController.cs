@@ -56,7 +56,8 @@ namespace Bookeasy.Api.Controllers
         [Route("{commentId}")]
         [HttpPut]
         [ProducesResponseType(typeof(Comment), StatusCodes.Status200OK)]
-        public async Task<IActionResult> UpdateComment([FromRoute] string postId, [FromRoute] string commentId, UpdateCommentCommand command)
+        public async Task<IActionResult> UpdateComment([FromRoute] string postId, [FromRoute] string commentId,
+            UpdateCommentCommand command)
         {
             command.CommentId = commentId;
             command.PostId = postId;
@@ -78,11 +79,7 @@ namespace Bookeasy.Api.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteComment([FromRoute] string postId, [FromRoute] string commentId)
         {
-            await _mediator.Send(new DeleteCommentCommand
-            {
-                PostId = postId,
-                CommentId = commentId
-            });
+            await _mediator.Send(new DeleteCommentCommand { PostId = postId, CommentId = commentId });
             return Ok();
         }
 
@@ -96,7 +93,8 @@ namespace Bookeasy.Api.Controllers
         [Route("{commentId}/vote")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> VoteComment([FromRoute] string postId, [FromRoute] string commentId, CreateVoteCommentDto body)
+        public async Task<IActionResult> VoteComment([FromRoute] string postId, [FromRoute] string commentId,
+            CreateVoteCommentDto body)
         {
             await _mediator.Send(new CreateVoteCommentCommand
             {
