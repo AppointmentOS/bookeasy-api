@@ -16,7 +16,7 @@ namespace Bookeasy.Application.Posts.Commands.CreateVoteCommand
         {
             _context = context;
         }
-        
+
         public async Task<CQRSResult<Unit>> Handle(Commands.CreateVoteCommand.CreateVoteCommand request, CancellationToken cancellationToken)
         {
             switch (request.VoteType)

@@ -23,7 +23,7 @@ namespace Bookeasy.Application.Comments.Commands.CreateVoteCommentCommand
         {
             _context = context;
         }
-        
+
         public async Task<Unit> Handle(CreateVoteCommentCommand request, CancellationToken cancellationToken)
         {
             switch (request.VoteType)

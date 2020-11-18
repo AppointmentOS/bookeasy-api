@@ -20,7 +20,7 @@ namespace Bookeasy.Application.Comments.Commands.DeleteVoteCommentCommand
         {
             _context = context;
         }
-        
+
         public async Task<Unit> Handle(DeleteVoteCommentCommand request, CancellationToken cancellationToken)
         {
             await _context.Comment.RemoveVoteAsync(request.PostId, request.CommentId, request.UserId);

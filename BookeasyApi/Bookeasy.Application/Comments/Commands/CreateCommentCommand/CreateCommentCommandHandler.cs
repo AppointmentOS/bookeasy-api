@@ -19,12 +19,12 @@ namespace Bookeasy.Application.Comments.Commands.CreateCommentCommand
             _context = context;
             _mapper = mapper;
         }
-        
+
         public async Task<Comment> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
         {
             if (string.IsNullOrEmpty(request.OwnerUserId))
                 throw new ArgumentException(nameof(request.OwnerUserId) + " is required");
-            
+
             if (string.IsNullOrEmpty(request.PostId))
                 throw new ArgumentException(nameof(request.PostId) + " is required");
 

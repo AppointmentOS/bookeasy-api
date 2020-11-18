@@ -33,7 +33,7 @@ namespace Bookeasy.Api.Controllers
             _mediator = mediator;
             _mapper = mapper;
         }
-        
+
         /// <summary>
         /// Get all post
         /// </summary>
@@ -41,11 +41,11 @@ namespace Bookeasy.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllPost()
         {
-            var posts = await  _mediator.Send(new GetAllPostQuery());
+            var posts = await _mediator.Send(new GetAllPostQuery());
             posts = posts.Select(GetResourceWithUri).ToList();
             return Ok(posts);
         }
-        
+
         /// <summary>
         /// Get a single post
         /// </summary>
@@ -64,7 +64,7 @@ namespace Bookeasy.Api.Controllers
             var post = await _mediator.Send(query);
             return Ok(GetResourceWithUri(post));
         }
-        
+
         /// <summary>
         /// Create a new post
         /// </summary>
@@ -97,7 +97,7 @@ namespace Bookeasy.Api.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> DeletePost(string postId)
         {
-            await _mediator.Send(new DeletePostCommand {PostId = postId});
+            await _mediator.Send(new DeletePostCommand { PostId = postId });
             return NoContent();
         }
 
@@ -159,7 +159,7 @@ namespace Bookeasy.Api.Controllers
         private PostDto GetResourceWithUri(PostDto dto)
         {
             var result = JsonConvert.DeserializeObject<PostDto>(JsonConvert.SerializeObject(dto));
-            result.Id = UrlHelperExtensions.Action(Url, nameof(GetPost), new {postId = result.Id});
+            result.Id = UrlHelperExtensions.Action(Url, nameof(GetPost), new { postId = result.Id });
             return result;
         }
     }

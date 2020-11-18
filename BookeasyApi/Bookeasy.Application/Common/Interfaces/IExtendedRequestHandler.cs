@@ -11,6 +11,6 @@ namespace Bookeasy.Application.Common.Interfaces
     public interface IExtendedRequestHandler<TRequest> : IRequestHandler<TRequest, CQRSResult<Unit>>
         where TRequest : IRequest<CQRSResult<Unit>>
     {
-        
+
     }
 }

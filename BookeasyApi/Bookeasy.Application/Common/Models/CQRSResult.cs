@@ -11,7 +11,7 @@ namespace Bookeasy.Application.Common.Models
 
         public bool Success => Error == null;
 
-        public bool Failed => Error !=  null;
+        public bool Failed => Error != null;
 
         private CQRSResult()
         {

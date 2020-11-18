@@ -60,7 +60,7 @@ namespace Bookeasy.Infrastructure.Identity
                     }),
                     RefreshToken = _authenticationTokenGenerator.GenerateRefreshToken(user.Email).Token
                 };
-            
+
             throw new AuthenticationException("Invalid email or password");
         }
     }

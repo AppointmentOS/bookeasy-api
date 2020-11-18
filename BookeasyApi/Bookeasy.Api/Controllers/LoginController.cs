@@ -39,7 +39,7 @@ namespace Bookeasy.Api.Controllers
             var result = await Mediator.Send(query);
             if (!result.Failed)
                 return Ok(result.Payload);
-            
+
             return BadRequest(new ProblemDetails()
             {
                 Title = result.Error.Message

@@ -62,7 +62,7 @@ namespace Bookeasy.Persistence.Collections
 
         public User Update(string id, User updatedUser)
         {
-            var updated =  _users.ReplaceOne(user => user.Id.ToString() == id, updatedUser);
+            var updated = _users.ReplaceOne(user => user.Id.ToString() == id, updatedUser);
             return updatedUser;
         }
 

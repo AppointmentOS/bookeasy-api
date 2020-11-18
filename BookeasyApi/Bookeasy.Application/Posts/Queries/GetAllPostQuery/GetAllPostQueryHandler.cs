@@ -19,11 +19,11 @@ namespace Bookeasy.Application.Posts.Queries.GetAllPostQuery
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        
+
         public async Task<List<PostDto>> Handle(GetAllPostQuery request, CancellationToken cancellationToken)
         {
             var posts = await _dbContext.Post.GetAsync();
-            
+
             return _mapper.Map<List<PostDto>>(posts.ToList());
         }
     }

@@ -21,7 +21,7 @@ namespace Bookeasy.Infrastructure.Identity
         {
             if (string.IsNullOrEmpty(password))
                 throw new ArgumentNullException(nameof(password));
-            
+
             var argon2 = new Argon2id(Encoding.UTF8.GetBytes(password));
 
             argon2.Salt = Convert.FromBase64String(salt);
@@ -34,7 +34,7 @@ namespace Bookeasy.Infrastructure.Identity
 
         public static bool VerifyPassword(string password, string salt, string hash)
         {
-            return Convert.FromBase64String(HashPassword(password,salt)).SequenceEqual(Convert.FromBase64String(hash));
+            return Convert.FromBase64String(HashPassword(password, salt)).SequenceEqual(Convert.FromBase64String(hash));
         }
     }
 }

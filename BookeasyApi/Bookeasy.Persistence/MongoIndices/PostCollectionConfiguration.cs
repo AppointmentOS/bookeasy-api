@@ -10,7 +10,7 @@ namespace Bookeasy.Persistence.MongoIndices
             var keys = Builders<Post>.IndexKeys
                 .Ascending(post => post.Title);
 
-            var indexModel = new CreateIndexModel<Post>(keys, new CreateIndexOptions {Unique = true});
+            var indexModel = new CreateIndexModel<Post>(keys, new CreateIndexOptions { Unique = true });
             collection.Indexes.CreateOne(indexModel);
         }
     }

@@ -16,17 +16,17 @@ namespace Bookeasy.Application.Users.Queries.GetAuthenticationToken
         {
             _userManager = userManager;
         }
-        
+
         public async Task<CQRSResult<AuthenticationTokenDto>> Handle(GetAuthenticationTokenQuery request, CancellationToken cancellationToken)
         {
             try
             {
-                var result  = await _userManager.AuthenticateAsync(new AuthenticationRequest()
+                var result = await _userManager.AuthenticateAsync(new AuthenticationRequest()
                 {
                     Email = request.Email,
                     Password = request.Password
                 });
-            
+
                 return CQRSResult<AuthenticationTokenDto>.CreateSuccessResult(new AuthenticationTokenDto
                 {
                     Token = result.JwtToken,

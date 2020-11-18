@@ -9,7 +9,7 @@ namespace Bookeasy.Domain.Entities
     public class Post : IEntityBase
     {
         [BsonId]
-        public ObjectId Id{ get; set; }
+        public ObjectId Id { get; set; }
         [BsonRepresentation(BsonType.String)]
         public PostType PostType { get; set; }
         public HashSet<string> UsersVotedUp { get; set; } = new HashSet<string>();

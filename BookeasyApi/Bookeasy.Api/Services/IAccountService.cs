@@ -5,7 +5,7 @@
         public string Username { get; set; }
         public string Password { get; set; }
     }
-    
+
     public interface IAccountService
     {
         void SignUp(NewAccount newAccount);
@@ -18,5 +18,5 @@
             throw new System.NotImplementedException();
         }
     }
-    
+
 }

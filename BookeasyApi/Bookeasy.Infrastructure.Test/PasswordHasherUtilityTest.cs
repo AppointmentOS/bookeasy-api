@@ -15,7 +15,7 @@ namespace Bookeasy.Infrastructure.Test
             var salt = PasswordHasherUtility.CreateSalt();
             var hash = PasswordHasherUtility.HashPassword(password, salt);
             Assert.IsNotEmpty(hash);
-            Assert.AreNotSame(password,hash);
+            Assert.AreNotSame(password, hash);
         }
 
         [Test]
@@ -32,8 +32,8 @@ namespace Bookeasy.Infrastructure.Test
             var password = "hellowordl";
             var salt = PasswordHasherUtility.CreateSalt();
             var hash = PasswordHasherUtility.HashPassword(password, salt);
-            
-            Assert.IsTrue(PasswordHasherUtility.VerifyPassword(password,salt,hash));
+
+            Assert.IsTrue(PasswordHasherUtility.VerifyPassword(password, salt, hash));
         }
     }
 }

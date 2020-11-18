@@ -19,7 +19,7 @@ namespace Bookeasy.Application.Common.Behaviours
             _logger = logger;
             // _currentUserService = currentUserService;
         }
-        
+
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
             _timer.Start();
@@ -32,7 +32,7 @@ namespace Bookeasy.Application.Common.Behaviours
             {
                 var name = typeof(TRequest).Name;
 
-                _logger.LogWarning("Bookeasy Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@Request}", 
+                _logger.LogWarning("Bookeasy Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@Request}",
                     name, _timer.ElapsedMilliseconds, request);
             }
 

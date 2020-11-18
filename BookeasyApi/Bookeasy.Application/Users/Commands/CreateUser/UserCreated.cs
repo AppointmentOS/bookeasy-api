@@ -9,7 +9,7 @@ namespace Bookeasy.Application.Users.Commands.CreateUser
     public class UserCreated : INotification
     {
         public string UserId { get; set; }
-        
+
         public class UserCreatedHandler : INotificationHandler<UserCreated>
         {
             private readonly INotificationService _notification;

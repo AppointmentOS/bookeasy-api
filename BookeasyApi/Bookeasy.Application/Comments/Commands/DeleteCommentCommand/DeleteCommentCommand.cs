@@ -10,7 +10,7 @@ namespace Bookeasy.Application.Comments.Commands.DeleteCommentCommand
         public string PostId { get; set; }
         public string CommentId { get; set; }
     }
-    
+
     public class DeleteCommentCommandHandler : IRequestHandler<DeleteCommentCommand>
     {
         private readonly IIrisDbContext _context;
@@ -19,7 +19,7 @@ namespace Bookeasy.Application.Comments.Commands.DeleteCommentCommand
         {
             _context = context;
         }
-        
+
         public async Task<Unit> Handle(DeleteCommentCommand request, CancellationToken cancellationToken)
         {
             await _context.Comment.RemoveAsync(request.PostId, request.CommentId);

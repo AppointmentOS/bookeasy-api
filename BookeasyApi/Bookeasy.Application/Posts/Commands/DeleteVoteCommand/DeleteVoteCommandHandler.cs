@@ -13,10 +13,10 @@ namespace Bookeasy.Application.Posts.Commands.DeleteVoteCommand
         {
             _context = context;
         }
-        
+
         public async Task<Unit> Handle(Commands.DeleteVoteCommand.DeleteVoteCommand request, CancellationToken cancellationToken)
         {
-            await  _context.Post.RemoveVoteAsync(request.PostId, request.UserId);
+            await _context.Post.RemoveVoteAsync(request.PostId, request.UserId);
             return Unit.Value;
         }
     }

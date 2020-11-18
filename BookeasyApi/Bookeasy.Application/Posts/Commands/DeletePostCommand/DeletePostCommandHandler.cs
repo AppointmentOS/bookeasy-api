@@ -13,7 +13,7 @@ namespace Bookeasy.Application.Posts.Commands.DeletePostCommand
         {
             _context = context;
         }
-        
+
         public async Task<Unit> Handle(DeletePostCommand request, CancellationToken cancellationToken)
         {
             await _context.Post.RemoveAsync(request.PostId);

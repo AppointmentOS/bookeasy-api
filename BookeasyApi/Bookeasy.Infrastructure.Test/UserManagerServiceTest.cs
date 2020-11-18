@@ -23,15 +23,15 @@ namespace Bookeasy.Infrastructure.Test
             var userMock = new Mock<IUserCollection>();
             userMock.Setup(u => u.CreateAsync(It.IsAny<User>()))
                 .ReturnsAsync(() => new User()
-            {
-                Id = ObjectId.GenerateNewId(),
-                Email = user.Email,
-                PasswordHash = "hash"
-            });
+                {
+                    Id = ObjectId.GenerateNewId(),
+                    Email = user.Email,
+                    PasswordHash = "hash"
+                });
             var contextMock = new Mock<IIrisDbContext>();
             contextMock.SetupGet(ctx => ctx.User).Returns(userMock.Object);
-            
-            var tokenGeneratorMock=  new Mock<IAuthenticationTokenGenerator>();
+
+            var tokenGeneratorMock = new Mock<IAuthenticationTokenGenerator>();
 
             var manager = new UserManagerService(contextMock.Object, tokenGeneratorMock.Object);
             var result = await manager.CreateUserAsync(user, password);

@@ -40,7 +40,8 @@ namespace Bookeasy.Api.Controllers
         {
             var comment = await _mediator.Send(new CreateCommentCommand()
             {
-                OwnerUserId = User.GetUserId(), PostId = postId
+                OwnerUserId = User.GetUserId(),
+                PostId = postId
             });
             return Created("", comment);
         }
@@ -80,7 +81,7 @@ namespace Bookeasy.Api.Controllers
             await _mediator.Send(new DeleteCommentCommand
             {
                 PostId = postId,
-                    CommentId = commentId
+                CommentId = commentId
             });
             return Ok();
         }
@@ -100,9 +101,9 @@ namespace Bookeasy.Api.Controllers
             await _mediator.Send(new CreateVoteCommentCommand
             {
                 PostId = postId,
-                    CommentId = commentId,
-                    UserId = User.GetUserId(),
-                    VoteType = Enum.Parse<VoteType>(body.VoteType, true)
+                CommentId = commentId,
+                UserId = User.GetUserId(),
+                VoteType = Enum.Parse<VoteType>(body.VoteType, true)
             });
 
             return Ok();
@@ -121,8 +122,8 @@ namespace Bookeasy.Api.Controllers
             await _mediator.Send(new DeleteVoteCommentCommand
             {
                 PostId = postId,
-                    CommentId = commentId,
-                    UserId = User.GetUserId()
+                CommentId = commentId,
+                UserId = User.GetUserId()
             });
 
             return Ok();

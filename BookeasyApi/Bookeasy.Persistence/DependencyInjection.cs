@@ -25,7 +25,7 @@ namespace Bookeasy.Persistence
                 }
                 return new IrisDbContext(client);
             });
-            
+
             return services;
         }
     }

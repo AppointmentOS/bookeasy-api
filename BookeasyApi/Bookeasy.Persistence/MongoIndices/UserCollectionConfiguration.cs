@@ -10,8 +10,8 @@ namespace Bookeasy.Persistence.MongoIndices
         {
             var keys = Builders<User>.IndexKeys
                 .Ascending(user => user.Email);
-            
-            var indexModel = new CreateIndexModel<User>(keys, new CreateIndexOptions{Unique = true});
+
+            var indexModel = new CreateIndexModel<User>(keys, new CreateIndexOptions { Unique = true });
             collection.Indexes.CreateOne(indexModel);
         }
     }

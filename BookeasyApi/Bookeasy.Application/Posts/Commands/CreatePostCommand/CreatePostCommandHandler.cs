@@ -24,7 +24,7 @@ namespace Bookeasy.Application.Posts.Commands.CreatePostCommand
         {
             if (string.IsNullOrEmpty(request.OwnerUserId))
                 return CQRSResult<PostDto>.CreateFailureResult(new Exception("OwnerId is missing"));
-            
+
             var post = new Post
             {
                 Title = request.Title,
