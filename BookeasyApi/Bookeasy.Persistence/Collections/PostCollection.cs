@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Bookeasy.Application.Common.Interfaces;
 using Bookeasy.Data.Services;
 using Bookeasy.Domain.Entities;
-using Bookeasy.Persistence.MongoIndices;
+using Bookeasy.Persistence.Configurations;
 using MongoDB.Bson;
 using MongoDB.Driver;
 

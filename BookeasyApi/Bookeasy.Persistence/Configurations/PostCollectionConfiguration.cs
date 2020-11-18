@@ -1,7 +1,7 @@
 using Bookeasy.Domain.Entities;
 using MongoDB.Driver;
 
-namespace Bookeasy.Persistence.MongoIndices
+namespace Bookeasy.Persistence.Configurations
 {
     public static class PostCollectionConfiguration
     {

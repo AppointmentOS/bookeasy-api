@@ -1,6 +1,5 @@
 ﻿using Bookeasy.Application.Common.Interfaces;
 using Bookeasy.Persistence.Collections;
-using Bookeasy.Persistence.MongoIndices;
 using MongoDB.Driver;
 
 namespace Bookeasy.Persistence
