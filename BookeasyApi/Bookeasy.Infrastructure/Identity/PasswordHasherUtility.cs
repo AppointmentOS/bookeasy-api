@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Konscious.Security.Cryptography;
+using System;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using Konscious.Security.Cryptography;
 
 namespace Bookeasy.Infrastructure.Identity
 {

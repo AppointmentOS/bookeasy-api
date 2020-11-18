@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using AutoMapper;
+﻿using AutoMapper;
 using Bookeasy.Application.Common.Mappings;
 using Bookeasy.Domain.Entities;
+using System;
+using System.Collections.Generic;
 
 namespace Bookeasy.Application.Common.Models
 {

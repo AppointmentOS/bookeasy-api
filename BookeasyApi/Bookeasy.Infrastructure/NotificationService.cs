@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using Bookeasy.Application.Common.Interfaces;
+﻿using Bookeasy.Application.Common.Interfaces;
 using Bookeasy.Application.Notifications.Models;
+using System.Threading.Tasks;
 
 namespace Bookeasy.Infrastructure
 {

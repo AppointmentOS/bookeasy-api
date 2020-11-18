@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using FluentValidation;
+using MediatR;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using FluentValidation;
-using MediatR;
 using ValidationException = Bookeasy.Application.Common.Exceptions.ValidationException;
 
 namespace Bookeasy.Application.Common.Behaviours

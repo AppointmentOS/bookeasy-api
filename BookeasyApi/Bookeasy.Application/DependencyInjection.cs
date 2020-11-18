@@ -1,8 +1,8 @@
-﻿using System.Reflection;
-using AutoMapper;
+﻿using AutoMapper;
 using Bookeasy.Application.Common.Behaviours;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace Bookeasy.Application
 {

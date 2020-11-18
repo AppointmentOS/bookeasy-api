@@ -1,5 +1,5 @@
-using FluentValidation;
 using Bookeasy.Application.Posts.Commands.CreatePostCommand;
+using FluentValidation;
 
 namespace Bookeasy.Application.Comments.Commands.CreateCommentCommand
 {

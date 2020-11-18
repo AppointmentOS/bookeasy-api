@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Bookeasy.Application.Common.Interfaces;
+using Bookeasy.Application.Common.Models;
+using Bookeasy.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Security.Authentication;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Bookeasy.Application.Common.Interfaces;
-using Bookeasy.Application.Common.Models;
-using Bookeasy.Domain.Entities;
 
 namespace Bookeasy.Infrastructure.Identity
 {

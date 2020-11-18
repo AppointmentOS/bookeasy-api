@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver.GeoJsonObjectModel;
+using System;
+using System.Collections.Generic;
 
 namespace Bookeasy.Domain.Entities
 {

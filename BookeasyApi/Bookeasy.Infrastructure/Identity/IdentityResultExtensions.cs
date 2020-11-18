@@ -1,6 +1,6 @@
-﻿using System.Linq;
-using Bookeasy.Application.Common.Models;
+﻿using Bookeasy.Application.Common.Models;
 using Microsoft.AspNetCore.Identity;
+using System.Linq;
 
 namespace Bookeasy.Infrastructure.Identity
 {

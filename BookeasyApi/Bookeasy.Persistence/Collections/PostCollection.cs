@@ -1,20 +1,21 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Bookeasy.Application.Common.Interfaces;
+﻿using Bookeasy.Application.Common.Interfaces;
 using Bookeasy.Data.Services;
 using Bookeasy.Domain.Entities;
 using Bookeasy.Persistence.Configurations;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Bookeasy.Persistence.Collections
 {
-    public class PostCollection : CollectionBase, IPostCollection
+    public class PostCollection : CollectionBase<Post>, IPostCollection
     {
-        private IMongoCollection<Post> _posts => _database.GetCollection<Post>("posts");
+        private readonly IMongoCollection<Post> _posts;
 
-        public PostCollection(IMongoDatabase database) : base(database)
+        public PostCollection(IMongoCollection<Post> collection) : base(collection)
         {
+            _posts = collection;
             PostCollectionConfiguration.ConfigureUniqueIndex(_posts);
         }
 

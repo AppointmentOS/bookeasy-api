@@ -1,14 +1,15 @@
-﻿using MongoDB.Driver;
+﻿using Bookeasy.Domain.Entities;
+using MongoDB.Driver;
 
 namespace Bookeasy.Data.Services
 {
-    public abstract class CollectionBase
+    public abstract class CollectionBase<T>
     {
-        protected readonly IMongoDatabase _database;
+        protected readonly IMongoCollection<T> Collection;
 
-        protected CollectionBase(IMongoDatabase database)
+        protected CollectionBase(IMongoCollection<T> collection)
         {
-            _database = database;
+            Collection = collection;
         }
     }
 }

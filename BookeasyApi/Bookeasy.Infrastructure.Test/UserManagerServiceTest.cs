@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
-using Bookeasy.Application.Common.Interfaces;
+﻿using Bookeasy.Application.Common.Interfaces;
 using Bookeasy.Domain.Entities;
 using Bookeasy.Infrastructure.Identity;
 using MongoDB.Bson;
 using Moq;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace Bookeasy.Infrastructure.Test
 {

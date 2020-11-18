@@ -1,8 +1,8 @@
-﻿using System;
+﻿using AutoMapper;
+using Bookeasy.Application.Common.Mappings;
+using System;
 using System.Linq;
 using System.Reflection;
-using AutoMapper;
-using Bookeasy.Application.Common.Mappings;
 
 namespace Bookeasy.Api.Mapper
 {

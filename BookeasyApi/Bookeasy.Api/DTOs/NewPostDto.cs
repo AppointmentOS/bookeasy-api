@@ -1,6 +1,6 @@
-using System;
-using FluentValidation;
 using Bookeasy.Domain.Entities;
+using FluentValidation;
+using System;
 
 namespace Bookeasy.Api.DTOs
 {

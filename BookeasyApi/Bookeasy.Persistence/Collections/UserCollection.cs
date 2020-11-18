@@ -1,20 +1,21 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Bookeasy.Application.Common.Interfaces;
+﻿using Bookeasy.Application.Common.Interfaces;
 using Bookeasy.Data.Services;
 using Bookeasy.Domain.Entities;
 using Bookeasy.Persistence.Configurations;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Bookeasy.Persistence.Collections
 {
-    public class UserCollection : CollectionBase, IUserCollection
+    public class UserCollection : CollectionBase<User>, IUserCollection
     {
-        private IMongoCollection<User> _users => _database.GetCollection<User>("users");
+        private readonly IMongoCollection<User> _users;
 
-        public UserCollection(IMongoDatabase database) : base(database)
+        public UserCollection(IMongoCollection<User> collection) : base(collection)
         {
+            _users = collection;
             UserCollectionConfiguration.ConfigureUniqueIndex(_users);
         }
 

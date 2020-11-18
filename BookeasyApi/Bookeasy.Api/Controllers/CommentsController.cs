@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Bookeasy.Api.DTOs;
+﻿using Bookeasy.Api.DTOs;
 using Bookeasy.Application.Comments.Commands.CreateCommentCommand;
 using Bookeasy.Application.Comments.Commands.CreateVoteCommentCommand;
 using Bookeasy.Application.Comments.Commands.DeleteCommentCommand;
@@ -12,6 +10,8 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace Bookeasy.Api.Controllers
 {

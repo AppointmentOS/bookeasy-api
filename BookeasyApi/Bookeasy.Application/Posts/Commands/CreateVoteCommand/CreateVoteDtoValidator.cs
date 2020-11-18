@@ -1,6 +1,6 @@
-using System;
-using FluentValidation;
 using Bookeasy.Application.Common.Enums;
+using FluentValidation;
+using System;
 
 namespace Bookeasy.Application.Posts.Commands.CreateVoteCommand
 {

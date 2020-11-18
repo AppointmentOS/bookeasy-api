@@ -1,6 +1,7 @@
 ﻿using Bookeasy.Application.Common.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
 namespace Bookeasy.Persistence
@@ -9,22 +10,12 @@ namespace Bookeasy.Persistence
     {
         public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<IIrisDbContext>(provider =>
-            {
-                var clientSetting =
-                    MongoClientSettings.FromConnectionString(configuration["MongoDb:ConnectionString"]);
-                clientSetting.RetryWrites = false;
-                var client = new MongoClient(clientSetting);
-                try
-                {
-                    client.ListDatabaseNames();
-                }
-                catch (System.Exception)
-                {
-                    throw new System.Exception("Cannot connect to mongoDb");
-                }
-                return new IrisDbContext(client);
-            });
+            services.Configure<MongoDbDatabaseSettings>(configuration.GetSection(nameof(MongoDbDatabaseSettings)));
+
+            services.AddSingleton<IMongoDbDatabaseSettings>(provider =>
+                provider.GetRequiredService<IOptions<MongoDbDatabaseSettings>>().Value);
+
+            services.AddScoped<IIrisDbContext, IrisDbContext>();
 
             return services;
         }

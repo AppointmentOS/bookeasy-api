@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Bookeasy.Application.Common.Models;
+﻿using Bookeasy.Application.Common.Models;
 using MediatR;
+using System.Collections.Generic;
 
 namespace Bookeasy.Application.Posts.Queries.GetAllPostQuery
 {

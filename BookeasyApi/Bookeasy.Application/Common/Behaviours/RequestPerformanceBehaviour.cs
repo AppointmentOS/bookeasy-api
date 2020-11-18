@@ -1,9 +1,9 @@
-﻿using System.Diagnostics;
+﻿using Bookeasy.Application.Common.Interfaces;
+using MediatR;
+using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using Bookeasy.Application.Common.Interfaces;
-using Microsoft.Extensions.Logging;
-using MediatR;
 
 namespace Bookeasy.Application.Common.Behaviours
 {

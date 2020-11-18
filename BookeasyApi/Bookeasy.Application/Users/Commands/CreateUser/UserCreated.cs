@@ -1,8 +1,8 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Bookeasy.Application.Common.Interfaces;
+﻿using Bookeasy.Application.Common.Interfaces;
 using Bookeasy.Application.Notifications.Models;
 using MediatR;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Bookeasy.Application.Users.Commands.CreateUser
 {

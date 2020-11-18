@@ -1,12 +1,12 @@
-using System.Threading;
-using System.Threading.Tasks;
 using AutoMapper;
-using FluentValidation;
 using Bookeasy.Application.Common.Interfaces;
 using Bookeasy.Application.Common.Models;
 using Bookeasy.Domain.Entities;
+using FluentValidation;
 using MediatR;
 using MongoDB.Bson;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Bookeasy.Application.Comments.Commands.UpdateCommentCommand
 {

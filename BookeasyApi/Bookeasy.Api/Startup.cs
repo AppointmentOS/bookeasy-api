@@ -1,19 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 using AutoMapper;
-using FluentValidation.AspNetCore;
 using Bookeasy.Application;
 using Bookeasy.Application.Common.Interfaces;
 using Bookeasy.Infrastructure;
 using Bookeasy.Persistence;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 
 namespace Bookeasy.Api
 {

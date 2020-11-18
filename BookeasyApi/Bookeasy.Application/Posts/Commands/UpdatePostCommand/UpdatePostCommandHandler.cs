@@ -1,10 +1,10 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Bookeasy.Application.Common.Interfaces;
 using Bookeasy.Application.Common.Models;
 using Bookeasy.Domain.Entities;
 using MediatR;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Bookeasy.Application.Posts.Commands.UpdatePostCommand
 {

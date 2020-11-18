@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Bookeasy.Application.Common.Interfaces;
+﻿using Bookeasy.Application.Common.Interfaces;
 using Bookeasy.Data.Services;
 using Bookeasy.Domain.Entities;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Bookeasy.Persistence.Collections
 {
-    public class CommentCollection : CollectionBase, ICommentCollection
+    public class CommentCollection : CollectionBase<Post>, ICommentCollection
     {
-        private IMongoCollection<Post> _posts => _database.GetCollection<Post>("posts");
+        private readonly IMongoCollection<Post> _posts;
 
-        public CommentCollection(IMongoDatabase database) : base(database)
+        public CommentCollection(IMongoCollection<Post> collection) : base(collection)
         {
+            _posts = collection;
         }
 
         public List<Comment> GetByPostId(string postId)

@@ -1,7 +1,7 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Bookeasy.Application.Common.Interfaces;
 using MediatR;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Bookeasy.Application.Posts.Commands.DeleteVoteCommand
 {

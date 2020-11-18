@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using Bookeasy.Application.Common.Models;
+﻿using Bookeasy.Application.Common.Models;
 using Bookeasy.Domain.Entities;
+using System.Threading.Tasks;
 
 namespace Bookeasy.Application.Common.Interfaces
 {
