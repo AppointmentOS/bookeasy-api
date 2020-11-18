@@ -25,8 +25,12 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
       working-directory: ${{env.working-directory}}
+    - name: Restore dotnet tool
+      run: dotnet tool restore
+      working-directory: ${{env.working-directory}}
     - name: Check code format
       run: dotnet format --check
+      working-directory: ${{env.working-directory}}
     - name: Build
       run: dotnet build --configuration Release --no-restore
       working-directory: ${{env.working-directory}}
