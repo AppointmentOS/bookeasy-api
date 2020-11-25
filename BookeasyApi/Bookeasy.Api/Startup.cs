@@ -1,14 +1,17 @@
 using AutoMapper;
 using Bookeasy.Application;
 using Bookeasy.Application.Common.Interfaces;
-using Bookeasy.Infrastructure;
 using Bookeasy.Persistence;
+using FirebaseAdmin;
 using FluentValidation.AspNetCore;
+using Google.Apis.Auth.OAuth2;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
@@ -19,24 +22,26 @@ namespace Bookeasy.Api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public IConfiguration Configuration { get; }
+        public IWebHostEnvironment HostingEnvironment { get; }
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
+            HostingEnvironment = environment;
         }
-
-        public IConfiguration Configuration { get; }
-        public IWebHostEnvironment Environment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(options => options.AddDefaultPolicy(builder => builder.AllowAnyOrigin()));
-            services.AddInfrastructure(Configuration, Environment);
             services.AddPersistence(Configuration);
             services.AddApplication();
             services.AddControllers()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<IIrisDbContext>())
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly()));
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             // allow all origins
             services.AddCors(o => o.AddDefaultPolicy(builder =>
@@ -45,6 +50,35 @@ namespace Bookeasy.Api
                     .AllowAnyMethod()
                     .AllowAnyHeader();
             }));
+
+            #region Firebase authentication
+
+            var pathToKey = Configuration["FirebaseAuthentication:AdminSdkPath"];
+
+            // initialize firebase admin sdk
+            FirebaseApp.Create(new AppOptions
+            {
+                Credential = GoogleCredential.FromFile(pathToKey)
+            });
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    var firebaseProjectName = Configuration["FirebaseAuthentication:ProjectName"];
+                    options.Authority = "https://securetoken.google.com/" + firebaseProjectName;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = "https://securetoken.google.com/" + firebaseProjectName,
+                        ValidateAudience = true,
+                        ValidAudience = firebaseProjectName,
+                        ValidateLifetime = true
+                    };
+                });
+
+            #endregion
+
+            #region Swagger
 
             services.AddSwaggerGen(c =>
             {
@@ -68,7 +102,11 @@ namespace Bookeasy.Api
                     {
                         new OpenApiSecurityScheme
                         {
-                            Reference = new OpenApiReference {Type = ReferenceType.SecurityScheme, Id = "Bearer"},
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
                             Scheme = "oauth2",
                             Name = "Bearer",
                             In = ParameterLocation.Header,
@@ -77,6 +115,8 @@ namespace Bookeasy.Api
                     }
                 });
             });
+
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
